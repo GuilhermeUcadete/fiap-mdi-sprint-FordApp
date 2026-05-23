@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, {
+  useState,
+  useContext,
+} from "react";
 
 import {
   ScrollView,
@@ -7,6 +10,10 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+
+import {
+  FavoritesContext,
+} from "../context/FavoritesContext";
 
 const vehicles = [
   {
@@ -141,7 +148,19 @@ export default function CompareScreen() {
   const [selectedVehicle, setSelectedVehicle] =
     useState(vehicles[1]);
 
+  const { addFavorite } =
+    useContext(FavoritesContext);
+
   const baseVehicle = vehicles[0];
+
+  function handleFavorite() {
+    addFavorite(selectedVehicle);
+
+    console.log(
+      "Favoritado:",
+      selectedVehicle.nome
+    );
+  }
 
   const winnerPower =
     baseVehicle.specs.Potência >
@@ -289,6 +308,15 @@ export default function CompareScreen() {
         </Text>
       </View>
 
+      <TouchableOpacity
+        style={styles.favoriteButton}
+        onPress={handleFavorite}
+      >
+        <Text style={styles.favoriteText}>
+          ⭐ Favoritar Veículo
+        </Text>
+      </TouchableOpacity>
+
       {renderBar(
         "Potência",
         baseVehicle.specs.Potência,
@@ -418,6 +446,20 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     marginBottom: 10,
+  },
+
+  favoriteButton: {
+    backgroundColor: "#ffb800",
+    padding: 16,
+    borderRadius: 14,
+    marginBottom: 20,
+  },
+
+  favoriteText: {
+    color: "#111",
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 16,
   },
 
   graphCard: {

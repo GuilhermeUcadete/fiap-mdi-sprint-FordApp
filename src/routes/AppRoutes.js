@@ -9,8 +9,16 @@ import {
 } from "@react-navigation/native-stack";
 
 import HomeScreen from "../screens/HomeScreen";
-import ResultScreen from "../screens/ResultScreen";
+
+import SearchScreen from "../screens/SearchScreen";
+
 import CompareScreen from "../screens/CompareScreen";
+
+import ResultScreen from "../screens/ResultScreen";
+
+import HistoryScreen from "../screens/HistoryScreen";
+
+import FavoritesScreen from "../screens/FavoritesScreen";
 
 const Stack =
   createNativeStackNavigator();
@@ -21,38 +29,46 @@ export default function AppRoutes() {
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#111",
+            backgroundColor:
+              "#111",
           },
 
           headerTintColor: "#fff",
 
           contentStyle: {
-            backgroundColor: "#111",
+            backgroundColor:
+              "#111",
           },
         }}
       >
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{
-            title: "Ford Intelligence",
-          }}
         />
 
         <Stack.Screen
-          name="Results"
-          component={ResultScreen}
-          options={{
-            title: "Especificações",
-          }}
+          name="Search"
+          component={SearchScreen}
         />
 
         <Stack.Screen
           name="Compare"
           component={CompareScreen}
-          options={{
-            title: "Comparação",
-          }}
+        />
+
+        <Stack.Screen
+          name="Result"
+          component={ResultScreen}
+        />
+
+        <Stack.Screen
+          name="History"
+          component={HistoryScreen}
+        />
+
+        <Stack.Screen
+          name="Favorites"
+          component={FavoritesScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

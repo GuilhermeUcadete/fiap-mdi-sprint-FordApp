@@ -6,44 +6,41 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
 } from "react-native";
 
 import {
-  HistoryContext,
-} from "../context/HistoryContext";
+  FavoritesContext,
+} from "../context/FavoritesContext";
 
-export default function HistoryScreen() {
-  const { history } =
-    useContext(HistoryContext);
+export default function FavoritesScreen() {
+  const { favorites } =
+    useContext(FavoritesContext);
 
   return (
-    <ScrollView
-      style={styles.container}
-    >
+    <View style={styles.container}>
       <Text style={styles.title}>
-        Histórico
+        Favoritos
       </Text>
 
-      {history.length === 0 ? (
+      {favorites.length === 0 ? (
         <View style={styles.emptyBox}>
           <Text style={styles.emptyText}>
-            Nenhuma pesquisa ainda
+            Nenhum favorito ainda
           </Text>
         </View>
       ) : (
-        history.map((vehicle) => (
+        favorites.map((vehicle) => (
           <View
             key={vehicle.nome}
             style={styles.card}
           >
             <Text style={styles.vehicle}>
-              {vehicle.nome}
+              ⭐ {vehicle.nome}
             </Text>
           </View>
         ))
       )}
-    </ScrollView>
+    </View>
   );
 }
 
@@ -87,4 +84,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-}); 
+});
