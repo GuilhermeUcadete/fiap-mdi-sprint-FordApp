@@ -59,6 +59,18 @@ npm install expo
 npx expo start
 ```
 
+### 3.1. Caso o projeto não abra
+
+```bash
+npx expo start --clear
+```
+
+### 3.2. Se o erro persistir 
+
+```bash
+nox expo start --tunnel
+```
+
 ### 4. Abra o aplicativo
 
 - **Android/iOS físico:** escaneie o QR Code com o app Expo Go
