@@ -68,7 +68,7 @@ npx expo start --clear
 ### 3.2. Se o erro persistir 
 
 ```bash
-nox expo start --tunnel
+npx expo start --tunnel
 ```
 
 ### 4. Abra o aplicativo
